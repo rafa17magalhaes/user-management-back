@@ -8,7 +8,9 @@ export interface IUserRepository {
   findById(id: number): Promise<UserEntity | null>;
   update(id: number, data: UpdateUserDto): Promise<UserEntity>;
   delete(id: number): Promise<void>;
-  //  métodos de relatório
+  findByEmail(email: string): Promise<UserEntity | null>;
+  findByName(name: string): Promise<UserEntity | null>;
+  //  métodos para relatório
   count(): Promise<number>;
   usersByMonth(): Promise<{ month: string; total: number }[]>;
 }

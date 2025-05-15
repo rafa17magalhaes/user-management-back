@@ -16,7 +16,6 @@ import {
   ApiTags,
   ApiResponse,
   ApiParam,
-  ApiBody,
 } from '@nestjs/swagger';
 
 @ApiTags('users')
@@ -61,7 +60,6 @@ export class UsersController {
   }
 
   // Relatórios
-
   @Get('reports/count')
   @ApiResponse({
     status: 200,

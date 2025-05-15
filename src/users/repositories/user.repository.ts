@@ -26,6 +26,14 @@ export class UserRepository implements IUserRepository {
     return this.repo.findOne({ where: { id } });
   }
 
+  findByEmail(email: string): Promise<UserEntity | null> {
+    return this.repo.findOne({ where: { email } });
+  }
+
+  findByName(name: string): Promise<UserEntity | null> {
+    return this.repo.findOne({ where: { name } });
+  }
+
   update(id: number, data: UpdateUserDto): Promise<UserEntity> {
     return this.repo.save({ id, ...data });
   }
