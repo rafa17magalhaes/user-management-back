@@ -34,8 +34,10 @@ export class UserRepository implements IUserRepository {
     return this.repo.findOne({ where: { name } });
   }
 
-  update(id: number, data: UpdateUserDto): Promise<UserEntity> {
-    return this.repo.save({ id, ...data });
+  async update(id: number, data: UpdateUserDto): Promise<UserEntity> {
+    await this.repo.update(id, data);
+    // reload to return the updated entity without overwriting missing fields
+    return this.findById(id) as Promise<UserEntity>;
   }
 
   async delete(id: number): Promise<void> {
